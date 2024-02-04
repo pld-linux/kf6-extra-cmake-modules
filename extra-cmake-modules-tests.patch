@@ -1,0 +1,12 @@
+diff -up extra-cmake-modules-5.91.0/tests/ECMPoQmToolsTest/check.cmake.in.orig extra-cmake-modules-5.91.0/tests/ECMPoQmToolsTest/check.cmake.in
+--- extra-cmake-modules-5.91.0/tests/ECMPoQmToolsTest/check.cmake.in.orig	2022-02-05 16:33:17.000000000 +0100
++++ extra-cmake-modules-5.91.0/tests/ECMPoQmToolsTest/check.cmake.in	2022-02-14 16:48:05.753931574 +0100
+@@ -74,7 +74,7 @@ if("@CMAKE_SYSTEM_NAME@" STREQUAL "Linux
+         foreach(lang en de de_AT fr)
+             execute_process(
+                 COMMAND "${CMAKE_COMMAND}" -E env "XDG_DATA_DIRS=${ACTUAL_TREE}/share"
+-                    LANG=${lang} "${exec}"
++                    LC_ALL=${lang} "${exec}"
+                 OUTPUT_VARIABLE output
+             )
+             string(STRIP "${output}" stripped_output)
