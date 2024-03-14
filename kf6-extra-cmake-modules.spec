@@ -86,7 +86,8 @@ Dokumentacja API dla %{orgname}.
 %build
 %cmake -B build \
 	%{!?with_tests:-DBUILD_TESTING=OFF} \
-	%{!?with_doc:-DBUILD_HTML_DOCS=OFF}
+	%{!?with_doc:-DBUILD_HTML_DOCS=OFF} \
+	%{!?with_doc:-DBUILD_MAN_DOCS=OFF}
 
 %{__make} -C build
 
@@ -101,7 +102,7 @@ ctest -E '(GenerateSipBindings|ECMPoQmToolsTest)' --output-on-failure
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} -C build -j1 install \
-        DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT
 
 sed -i -e 's#/usr/bin/env bash#/bin/bash#' $RPM_BUILD_ROOT%{_datadir}/ECM/kde-modules/kde-git-commit-hooks/pre-commit.in
 sed -i -e 's#/usr/bin/env bash#/bin/bash#' $RPM_BUILD_ROOT%{_datadir}/ECM/kde-modules/kde-git-commit-hooks/clang-format.sh
@@ -119,7 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING-CMAKE-SCRIPTS README.rst
 %{_datadir}/ECM
 %{_datadir}/qlogging-categories6
-%{_mandir}/man7/ecm*.7*
+%{?with_doc:%{_mandir}/man7/ecm*.7*}
 
 %if %{with doc}
 %files apidocs
