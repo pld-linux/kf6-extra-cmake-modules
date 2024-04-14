@@ -4,16 +4,16 @@
 %bcond_without	tests		# build without tests
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	6.0
+%define		kdeframever	6.1
 Summary:	Extra Cmake Modules for KF6
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF6
 Name:		kf6-%{orgname}
-Version:	6.0.0
+Version:	6.1.0
 Release:	1
 License:	BSD
 Group:		Development/Building
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	3e1b640fc5c3b4d96484029d1034c48a
+# Source0-md5:	1109efb1a8e84918f74c2e8e650a049a
 Patch0:		%{orgname}-tests.patch
 Patch1:		kdefetchtranslations-test.patch
 Patch2:		no-fatal-warnings.patch
@@ -77,7 +77,7 @@ Dokumentacja API dla %{orgname}.
 %prep
 %setup -q -n %{orgname}-%{version}
 %patch0 -p1
-%patch1 -p0
+%patch1 -p1
 %patch2 -p1
 
 # causes make install failure after running tests

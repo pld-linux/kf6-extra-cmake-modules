@@ -1,14 +1,14 @@
-diff -up extra-cmake-modules-5.249.0/kde-modules/KDECompilerSettings.cmake.orig extra-cmake-modules-5.249.0/kde-modules/KDECompilerSettings.cmake
---- extra-cmake-modules-5.249.0/kde-modules/KDECompilerSettings.cmake.orig	2024-02-03 10:14:12.611733929 +0100
-+++ extra-cmake-modules-5.249.0/kde-modules/KDECompilerSettings.cmake	2024-02-03 10:15:03.631553247 +0100
+diff -up extra-cmake-modules-6.1.0/kde-modules/KDECompilerSettings.cmake.orig extra-cmake-modules-6.1.0/kde-modules/KDECompilerSettings.cmake
+--- extra-cmake-modules-6.1.0/kde-modules/KDECompilerSettings.cmake.orig	2024-04-09 15:33:51.000000000 +0200
++++ extra-cmake-modules-6.1.0/kde-modules/KDECompilerSettings.cmake	2024-04-14 13:58:15.469923426 +0200
 @@ -546,8 +546,8 @@ if ((CMAKE_CXX_COMPILER_ID STREQUAL "GNU
          (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND NOT APPLE) OR
          (CMAKE_CXX_COMPILER_ID STREQUAL "Intel" AND NOT WIN32))
      # Linker warnings should be treated as errors
 -    set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
 -    set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
-+    ##set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
-+    ##set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
++##    set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_SHARED_LINKER_FLAGS}")
++##    set(CMAKE_MODULE_LINKER_FLAGS "-Wl,--fatal-warnings ${CMAKE_MODULE_LINKER_FLAGS}")
  
      string(TOUPPER "CMAKE_CXX_FLAGS_${CMAKE_BUILD_TYPE}" compileflags)
      if("${CMAKE_CXX_FLAGS} ${${compileflags}}" MATCHES "-fsanitize")
