@@ -32,6 +32,7 @@ BuildRequires:	Qt6Quick-devel >= 5.9.0
 BuildRequires:	libstdc++-devel >= 6:5
 %endif
 BuildConflicts:	qmake
+Obsoletes:	kf6-%{orgname} < %{version}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
