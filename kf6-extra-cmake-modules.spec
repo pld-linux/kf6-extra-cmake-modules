@@ -9,7 +9,7 @@ Summary:	Extra Cmake Modules for KF6
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF6
 Name:		kf6-%{orgname}
 Version:	6.4.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Building
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
