@@ -1,15 +1,15 @@
 #
 # Conditional build:
-%bcond_without	doc		# build without doc
-%bcond_without	tests		# build without tests
+%bcond_without	doc		# HTML documentation and man pages
+%bcond_without	tests		# test suite
 
 %define		orgname		extra-cmake-modules
 %define		kdeframever	6.6
-Summary:	Extra Cmake Modules for KF6
-Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF6
+Summary:	Extra Cmake Modules for KF5 and KF6
+Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5 i KF6
 Name:		kf6-%{orgname}
 Version:	6.6.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Building
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
@@ -19,20 +19,23 @@ Patch1:		kdefetchtranslations-test.patch
 Patch2:		no-fatal-warnings.patch
 URL:		https://kde.org/
 BuildRequires:	cmake >= 3.16
-BuildRequires:	qt6-assistant >= 5.9.0
-BuildRequires:	qt6-linguist
+BuildRequires:	qt6-assistant >= 6.0
+# cmake(LinguistTools)
+BuildRequires:	qt6-linguist >= 6.0
 BuildRequires:	rpmbuild(macros) >= 1.698
 BuildRequires:	sed >= 4.0
 %{?with_doc:BuildRequires:	sphinx-pdg >= 1.2}
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 %if %{with tests}
-BuildRequires:	Qt6Core-devel >= 5.9.0
-BuildRequires:	Qt6Quick-devel >= 5.9.0
+BuildRequires:	Qt6Core-devel >= 6.0
+BuildRequires:	Qt6Quick-devel >= 6.0
 BuildRequires:	libstdc++-devel >= 6:5
 %endif
 BuildConflicts:	qmake
-Obsoletes:	kf6-%{orgname} < %{version}
+# it contains a superset of kf5 modules
+Provides:	kf5-%{orgname} = %{version}
+Obsoletes:	kf5-%{orgname} < 6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -121,7 +124,9 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING-CMAKE-SCRIPTS README.rst
 %{_datadir}/ECM
 %{_datadir}/qlogging-categories6
-%{?with_doc:%{_mandir}/man7/ecm*.7*}
+%if %{with doc}
+%{_mandir}/man7/ecm*.7*
+%endif
 
 %if %{with doc}
 %files apidocs
