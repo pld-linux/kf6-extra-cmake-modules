@@ -4,16 +4,16 @@
 %bcond_without	tests		# test suite
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	6.8
+%define		kdeframever	6.9
 Summary:	Extra Cmake Modules for KF5 and KF6
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5 i KF6
 Name:		kf6-%{orgname}
-Version:	6.8.0
+Version:	6.9.0
 Release:	1
 License:	BSD
 Group:		Development/Building
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	3fd5f17c92a23573b85521b906729a9f
+# Source0-md5:	00a4cc351b7afd3b3b07c0126169e2e1
 Patch0:		%{orgname}-tests.patch
 Patch1:		kdefetchtranslations-test.patch
 Patch2:		no-fatal-warnings.patch
@@ -99,7 +99,7 @@ Dokumentacja API dla %{orgname}.
 # GenerateSipBindings wants clang and has libclang checks incompatible with libclang >= 4
 # ECMPoQmToolsTest fails to build it's own moc file
 cd build
-ctest -E '(GenerateSipBindings|ECMPoQmToolsTest|ECMGeneratePkgConfigFileTest)' --output-on-failure
+ctest -E '(GenerateSipBindings|ECMPoQmToolsTest)' --output-on-failure
 %endif
 
 %install
