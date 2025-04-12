@@ -4,16 +4,16 @@
 %bcond_without	tests		# test suite
 
 %define		orgname		extra-cmake-modules
-%define		kdeframever	6.12
+%define		kdeframever	6.13
 Summary:	Extra Cmake Modules for KF5 and KF6
 Summary(pl.UTF-8):	Dodatkowe moduły Cmake'a dla KF5 i KF6
 Name:		kf6-%{orgname}
-Version:	6.12.0
+Version:	6.13.0
 Release:	1
 License:	BSD
 Group:		Development/Building
 Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{orgname}-%{version}.tar.xz
-# Source0-md5:	a09b4950ecf16e3258711415a46a2956
+# Source0-md5:	fffa4105250ef446219808e275c754a5
 Patch0:		%{orgname}-tests.patch
 Patch1:		kdefetchtranslations-test.patch
 Patch2:		no-fatal-warnings.patch
